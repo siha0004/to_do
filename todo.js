@@ -59,7 +59,7 @@ function isChecked() {
 
 //View
 function createClick() {
-  addTaskToList(inputTask.value);
+  addTaskToList({ description: inputTask.value, amount: 1, done: false });
   updateView();
 }
 
