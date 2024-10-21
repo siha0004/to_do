@@ -21,3 +21,17 @@ h1 {
   font-size: 2.5rem;
   font-weight: 600;
 }
+
+li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem;
+}
+
+li button {
+  background-color: lightgray;
+}
+
+#list_done li {
+  color: gray;
+}
