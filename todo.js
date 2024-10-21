@@ -38,10 +38,12 @@ function updateView() {
   list.forEach((each, i) => {
     if (each.done === true) {
       console.log("harry potter");
-      doneTasks.innerHTML += `<li><input type="checkbox" name="done" id="done" > ${each.description}<button data-id="${i}" class="trash">slet</button></li>`;
+      doneTasks.innerHTML += `<li><input type="checkbox" name="done" id="done" > ${each.description} <input type="number" name="" id="">
+ <button data-id="${i}" class="trash">slet</button></li>`;
     } else {
       console.log("ron weasley");
-      activeTasks.innerHTML += `<li><input type="checkbox" name="done" id="done" > ${each.description}<button data-id="${i}" class="trash">slet</button></li>`;
+      activeTasks.innerHTML += `<li><input type="checkbox" name="done" id="done" > ${each.description} <input type="number" name="" id="">
+  <button data-id="${i}" class="trash">slet</button></li>`;
       console.log(i);
     }
   });

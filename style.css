@@ -35,3 +35,7 @@ li button {
 #list_done li {
   color: gray;
 }
+
+[type="number"] {
+  max-width: 4rem;
+}
