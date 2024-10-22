@@ -6,10 +6,12 @@ const button = document.querySelector("button");
 //Model
 let list;
 list = [
-  { description: "Agurk", amount: 1, done: false },
-  { description: "Tomat", amount: 4, done: true },
-  { description: "Pasta", amount: 2, done: false },
-  { description: "appelsin", amount: 2, done: true },
+  { description: "RandomUUId", amount: 1, done: false },
+  { description: "Event delegation", amount: 1, done: false },
+  { description: "Change done status", amount: 1, done: false },
+  { description: "Create localstorage", amount: 1, done: false },
+  { description: "Create objects", amount: 2, done: true },
+  { description: "Create HTML structure", amount: 2, done: true },
 ];
 // list = ["støvsug", "vask tøj", "tag opvask", "spise"];
 
@@ -30,6 +32,19 @@ function removeTaskFromList(id) {
   list.splice(id, 1);
 }
 
+function changeDoneToList(task) {
+  list.push(task);
+}
+
+function isChecked(event) {
+  event.preventDefault();
+  if (this.checked) {
+    console.log("checked");
+  } else {
+    console.log("not checked");
+  }
+}
+
 function updateView() {
   // Tømmer listerne
   activeTasks.innerHTML = "";
@@ -37,26 +52,21 @@ function updateView() {
 
   list.forEach((each, i) => {
     if (each.done === true) {
-      console.log("harry potter");
-      doneTasks.innerHTML += `<li><input type="checkbox" name="done" id="done" > ${each.description} <input type="number" name="" id="">
+      doneTasks.innerHTML += `<li><input type="checkbox" name="done" id="done" class="checkbox"> ${each.description} <input type="number" name="" id="">
  <button data-id="${i}" class="trash">slet</button></li>`;
     } else {
-      console.log("ron weasley");
-      activeTasks.innerHTML += `<li><input type="checkbox" name="done" id="done" > ${each.description} <input type="number" name="" id="">
+      activeTasks.innerHTML += `<li><input type="checkbox" name="done" id="done" class="checkbox"> ${each.description} <input type="number" name="" id="">
   <button data-id="${i}" class="trash">slet</button></li>`;
-      console.log(i);
     }
   });
 
   document.querySelectorAll(".trash").forEach((each) => {
     each.addEventListener("click", trashClick);
   });
-}
 
-function isChecked() {
-  if (this.checked) {
-    console.log("checked");
-  }
+  document.querySelectorAll(".checkbox").forEach((each) => {
+    each.addEventListener("click", isChecked);
+  });
 }
 
 //View
@@ -67,6 +77,5 @@ function createClick() {
 
 function trashClick(evt) {
   removeTaskFromList(evt.target.dataset.id);
-  console.log(evt.target.dataset.id);
   updateView();
 }
