@@ -2,18 +2,23 @@ const activeTasks = document.querySelector("#list_active");
 const doneTasks = document.querySelector("#list_done");
 const inputTask = document.querySelector("#tasklist");
 const button = document.querySelector("button");
-let container;
+const tasksArrayLS = localStorage.getItem("taskArray");
 
 //Model
 let list;
-list = [
-  { description: "RandomUUId", amount: 1, done: false },
-  { description: "Event delegation", amount: 1, done: false },
-  { description: "Change done status", amount: 1, done: false },
-  { description: "Create localstorage", amount: 1, done: false },
-  { description: "Create objects", amount: 2, done: true },
-  { description: "Create HTML structure", amount: 2, done: true },
-];
+if (tasksArrayLS === null) {
+  list = [];
+} else {
+  list = JSON.parse(tasksArrayLS);
+}
+// list = [
+//   { description: "RandomUUId", amount: 1, done: false },
+//   { description: "Event delegation", amount: 1, done: false },
+//   { description: "Change done status", amount: 1, done: false },
+//   { description: "Create localstorage", amount: 1, done: false },
+//   { description: "Create objects", amount: 2, done: true },
+//   { description: "Create HTML structure", amount: 2, done: true },
+// ];
 
 //Controlller
 init();
@@ -26,14 +31,12 @@ function init() {
 
 function addTaskToList(task) {
   list.push(task);
+  updateLocalStorage();
 }
 
-function removeTaskFromList(id) {
-  list.splice(id, 1);
-}
-
-function changeDoneToList(task) {
-  list.push(task);
+function updateLocalStorage() {
+  console.log("update list", list);
+  localStorage.setItem("taskArray", JSON.stringify(list));
 }
 
 function updateView() {
@@ -58,8 +61,6 @@ function updateView() {
 function liClick(evt) {
   const currentTarget = evt.currentTarget;
   const target = evt.target;
-  // console.log("currentTarget", currentTarget);
-  // console.log("target", target);
   const clickedId = currentTarget.dataset.id;
 
   if (target.type === "checkbox") {
@@ -75,6 +76,7 @@ function liClick(evt) {
     const arrayIndex = list.findIndex((element) => element.id === clickedId);
     list.splice(arrayIndex, 1);
   }
+  updateLocalStorage();
   updateView();
 }
 //View
