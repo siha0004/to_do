@@ -1,6 +1,7 @@
 const activeTasks = document.querySelector("#list_active");
 const doneTasks = document.querySelector("#list_done");
 const inputTask = document.querySelector("#tasklist");
+const inputAmount = document.querySelector("#amount");
 const button = document.querySelector("button");
 const tasksArrayLS = localStorage.getItem("taskArray");
 
@@ -46,10 +47,10 @@ function updateView() {
 
   list.forEach((each) => {
     if (each.done === true) {
-      doneTasks.innerHTML += `<li data-id="${each.id}"><input type="checkbox" name="done" id="done" class="checkbox" checked> ${each.description} <input type="number" name="" id="">
+      doneTasks.innerHTML += `<li data-id="${each.id}"><input type="checkbox" name="done" id="done" class="checkbox" checked> <input type="text" name="" id="" placeholder="${each.description}" /> <input type="number" name="" id="" placeholder=${each.amount} >
  <button data-type="trash" >slet</button></li>`;
     } else {
-      activeTasks.innerHTML += `<li data-id="${each.id}"><input type="checkbox" name="done" id="done" class="checkbox"> ${each.description} <input type="number" name="" id="">
+      activeTasks.innerHTML += `<li data-id="${each.id}"><input type="checkbox" name="done" id="done" class="checkbox"> <input type="text" name="" id="" placeholder="${each.description}" /><input type="number" name="" id="" placeholder=${each.amount} >
   <button data-type="trash" >slet</button></li>`;
     }
   });
@@ -84,7 +85,7 @@ function createClick() {
   addTaskToList({
     id: self.crypto.randomUUID(),
     description: inputTask.value,
-    amount: 1,
+    amount: inputAmount.value,
     done: false,
   });
   updateView();
