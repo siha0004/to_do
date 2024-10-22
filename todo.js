@@ -51,11 +51,11 @@ function updateView() {
     }
   });
   document.querySelectorAll("li").forEach((elm) => {
-    elm.addEventListener("click", liKlik);
+    elm.addEventListener("click", liClick);
   });
 }
 
-function liKlik(evt) {
+function liClick(evt) {
   const currentTarget = evt.currentTarget;
   const target = evt.target;
   // console.log("currentTarget", currentTarget);
@@ -66,16 +66,14 @@ function liKlik(evt) {
     evt.preventDefault();
 
     //  find taskobjektet i arrayet  ved hjælp af id
-    const aktueltObj = list.find((element) => element.id === clickedId);
+    const relevantObj = list.find((element) => element.id === clickedId);
 
     // gør noget ved objektet // arrayet
-    aktueltObj.done = !aktueltObj.done;
+    relevantObj.done = !relevantObj.done;
   }
   if (target.dataset.type === "trash") {
-    const arrayPlacering = list.findIndex(
-      (element) => element.id === clickedId
-    );
-    list.splice(arrayPlacering, 1);
+    const arrayIndex = list.findIndex((element) => element.id === clickedId);
+    list.splice(arrayIndex, 1);
   }
   updateView();
 }
