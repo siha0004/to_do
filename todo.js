@@ -50,13 +50,13 @@ function updateView() {
   activeTasks.innerHTML = "";
   doneTasks.innerHTML = "";
 
-  list.forEach((each, i) => {
+  list.forEach((each) => {
     if (each.done === true) {
-      doneTasks.innerHTML += `<li><input type="checkbox" name="done" id="done" class="checkbox"> ${each.description} <input type="number" name="" id="">
- <button data-id="${i}" class="trash">slet</button></li>`;
+      doneTasks.innerHTML += `<li data-id="${each.id}"><input type="checkbox" name="done" id="done" class="checkbox"> ${each.description} <input type="number" name="" id="">
+ <button  class="trash">slet</button></li>`;
     } else {
-      activeTasks.innerHTML += `<li><input type="checkbox" name="done" id="done" class="checkbox"> ${each.description} <input type="number" name="" id="">
-  <button data-id="${i}" class="trash">slet</button></li>`;
+      activeTasks.innerHTML += `<li data-id="${each.id}"><input type="checkbox" name="done" id="done" class="checkbox"> ${each.description} <input type="number" name="" id="">
+  <button  class="trash">slet</button></li>`;
     }
   });
 
@@ -71,7 +71,12 @@ function updateView() {
 
 //View
 function createClick() {
-  addTaskToList({ description: inputTask.value, amount: 1, done: false });
+  addTaskToList({
+    id: self.crypto.randomUUID(),
+    description: inputTask.value,
+    amount: 1,
+    done: false,
+  });
   updateView();
 }
 
