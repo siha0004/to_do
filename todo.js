@@ -80,6 +80,14 @@ function liClick(evt) {
   updateLocalStorage();
   updateView();
 }
+
+function clearInput() {
+  inputTask.value = "";
+  inputTask.blur();
+  inputAmount.value = "1";
+  inputAmount.blur();
+}
+
 //View
 function createClick() {
   addTaskToList({
@@ -88,6 +96,7 @@ function createClick() {
     amount: inputAmount.value,
     done: false,
   });
+  clearInput();
   updateView();
 }
 
