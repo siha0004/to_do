@@ -15,21 +15,22 @@
         <h1>To Do</h1>
     </header>
     <main>
-        <section>
+        <section class="flow-space">
             <h2>Your list</h2>
             <ul id="list_active"></ul>
-            <article>
-                <input type="number" name="amount" id="amount" />
+            <div class="create">
+                <input type="number" name="amount" id="amount" value="1" />
                 <input type="text" name="tasklist" id="tasklist" placeholder="Create task" />
-                <button>+</button>
-
-            </article>
+                <button><img src="icons/add.svg" alt="" class="add"></button>
+            </div>
 
             <h3>Done tasks</h3>
             <ul id="list_done"></ul>
         </section>
     </main>
-    <footer>Af Sif Melkane & Marie Wulff</footer>
+    <footer><small>Made by <br>
+            Sif Melkane & Marie Wulff</small>
+    </footer>
 </body>
 
 </html>
