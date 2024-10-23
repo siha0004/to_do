@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To Do</title>
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
     <script type="module" src="todo.js"></script>
-  </head>
+</head>
 
-  <body>
+<body>
     <header>
-      <h1>To Do</h1>
+        <h1>To Do</h1>
     </header>
     <main>
-      <ul id="list_active"></ul>
-      <label for="tasklist">+</label>
-      <input type="text" name="tasklist" id="tasklist" />
-      <input type="number" name="amount" id="amount" />
-      <button>submit</button>
-      <ul id="list_done"></ul>
+        <section>
+            <h2>Your list</h2>
+            <ul id="list_active"></ul>
+            <article>
+                <input type="number" name="amount" id="amount" />
+                <input type="text" name="tasklist" id="tasklist" placeholder="Create task" />
+                <button>+</button>
+
+            </article>
+
+            <h3>Done tasks</h3>
+            <ul id="list_done"></ul>
+        </section>
     </main>
     <footer>Af Sif Melkane & Marie Wulff</footer>
-  </body>
+</body>
+
 </html>

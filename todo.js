@@ -47,10 +47,10 @@ function updateView() {
 
   list.forEach((each) => {
     if (each.done === true) {
-      doneTasks.innerHTML += `<li data-id="${each.id}"><input type="checkbox" name="done" id="done" class="checkbox" checked> <input type="text" name="" id="" placeholder="${each.description}" /> <input type="number" name="" id="" placeholder=${each.amount} >
+      doneTasks.innerHTML += `<li data-id="${each.id}"><input type="checkbox" name="done" id="done" class="checkbox" checked><div class="content"><input type="text" name="number" id="number" placeholder=${each.amount} ><p>${each.description}</p></div>
  <button data-type="trash" >slet</button></li>`;
     } else {
-      activeTasks.innerHTML += `<li data-id="${each.id}"><input type="checkbox" name="done" id="done" class="checkbox"> <input type="text" name="" id="" placeholder="${each.description}" /><input type="number" name="" id="" placeholder=${each.amount} >
+      activeTasks.innerHTML += `<li data-id="${each.id}"><input type="checkbox" name="done" id="done" class="checkbox"><div class="content"><input type="text" name="number" id="number" placeholder=${each.amount}><input type="text" name="" id="" placeholder="${each.description}" /></div>
   <button data-type="trash" >slet</button></li>`;
     }
   });
