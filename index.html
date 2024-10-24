@@ -1,36 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To Do</title>
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
     <script type="module" src="todo.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <h1>To Do</h1>
+      <h1>To Do</h1>
     </header>
     <main>
-        <section class="flow-space">
-            <h2>Your list</h2>
-            <ul id="list_active"></ul>
-            <div class="create">
-                <input type="number" name="amount" id="amount" value="1" />
-                <input type="text" name="tasklist" id="tasklist" placeholder="Create task" />
-                <button><img src="icons/add.svg" alt="" class="add"></button>
-            </div>
+      <section class="flow-space">
+        <h2>Your list</h2>
+        <ul id="list_active"></ul>
+        <div class="create">
+          <input type="number" name="amount" id="amount" value="1" />
+          <span>x</span>
+          <input
+            type="text"
+            name="tasklist"
+            id="tasklist"
+            placeholder="Create task"
+          />
+          <button><img src="icons/add.svg" alt="" class="add" /></button>
+        </div>
 
-            <h3>Done tasks</h3>
-            <ul id="list_done"></ul>
-        </section>
+        <h3>Done tasks</h3>
+        <ul id="list_done"></ul>
+      </section>
     </main>
-    <footer><small>Made by <br>
-            Sif Melkane & Marie Wulff</small>
+    <footer>
+      <small
+        >Made by <br />
+        Sif Melkane & Marie Wulff</small
+      >
     </footer>
-</body>
-
+  </body>
 </html>
