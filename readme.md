@@ -95,4 +95,7 @@ function addTaskToList(task) {
 
 ## Perspektivering
 
-template
+Undervejs i projektet har vi flere gange været frustreret over vores `li` som vi indsætter med `innerHTML`. I `li` er der mange HTML tags nestet i hinanden, som gør at det bliver en meget lang streng.
+Vi har derfor overvejet, om det til en anden gang kunne være en god løsning at benytte sig af `<template/>` istedet.
+
+I vores løsning har vi implementeret at man kan indsende en ny value til tasks ved hjælp af "enter". Dog er denne løsning ikke implementeret, når man skal oprette en task på ny. Hvis vi skulle arbejde videre med vores opgave, kunne vi derfor forholdsvis nemt implementere denne løsning, når man skal tilføje en ny task.
