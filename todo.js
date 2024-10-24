@@ -52,7 +52,7 @@ function updateView() {
   // sammensætter liste elementer ved at loope igennem liste arrayet, og indsætte relevante værdier
   list.forEach((each) => {
     if (each.done === true) {
-      doneTasks.innerHTML += `<li data-id="${each.id}"><input type="checkbox" name="done" id="done" class="checkbox" checked><input type="number" name="number" id="number" value=${each.amount}><span>x</span><p>${each.description}</p>
+      doneTasks.innerHTML += `<li data-id="${each.id}"><input type="checkbox" name="done" id="done" class="checkbox" checked><p class="right">${each.amount}</p><span>x</span><p>${each.description}</p>
  <button data-type="trash" ></button></li>`;
     } else {
       activeTasks.innerHTML += `<li data-id="${each.id}"><input type="checkbox" name="done" id="done" class="checkbox"><input type="number" name="number" id="number" value=${each.amount}><span>x</span><input type="text" name="" id="" value="${each.description}" />
