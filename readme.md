@@ -17,7 +17,7 @@ Hver opgave/objekt/`li` har en datastruktur bestående af en som indeholder et i
 Vi har lavet en funktion som hedder udateView(), hvor vi til en start tømmer listerne, så vi er sikker på at der ikke er noget indhold. Dette gør vi ved at sætte både `done.tasks` & `active.tasks` med et `innerHTML = ""`
 Herefter kan vi bygge listerne igen, hvor vi looper igennem hver element i listen. Vi tjekker om done er true eller false, og tilføjer herefter `li`-elementerne til de respektive `ul`
 
-Hver `li`består af nogle inputfelter med henholdsvis en checkbox, number, og text. I elementer der er done, er inputfeltet for text, erstattet med et <p>, da det ikke skal være muligt at ændre i en færdig task. Derudover er der en sletknap på hvert element.
+Hver `li`består af nogle inputfelter med henholdsvis en checkbox, number, og text. I elementer der er done, er inputfeltet for text, erstattet med et `<p>`, da det ikke skal være muligt at ændre i en færdig task. Derudover er der en sletknap på hvert element.
 
 ```list.forEach((each) => {
     if (each.done === true) {
