@@ -7,9 +7,9 @@ const button = document.querySelector("button");
 const tasksArrayLS = localStorage.getItem("taskArray");
 
 //MODEL
+let list;
 // Hvis local storage er tomt skal arrayet også være det
 // Ellers skal arrayet indeholde, dataen man indsendt
-let list;
 if (tasksArrayLS === null) {
   list = [];
 } else {
@@ -37,10 +37,8 @@ function updateLocalStorage() {
 }
 
 function clearInput() {
-  // sætter value til at være tom
-  inputTask.value = "";
-  // gør at elementet ikke er i fokus
-  inputTask.blur();
+  inputTask.value = ""; // sætter value til at være tom
+  inputTask.blur(); // gør at elementet ikke er i fokus
   inputAmount.value = "1";
   inputAmount.blur();
 }
@@ -71,29 +69,23 @@ function updateView() {
 function liClick(evt) {
   const currentTarget = evt.currentTarget;
   const target = evt.target;
-  // id'et på det klikkede element
-  const clickedId = currentTarget.dataset.id;
-
-  //  find taskobjektet i arrayet  ved hjælp af id
-  const relevantObj = list.find((element) => element.id === clickedId);
+  const clickedId = currentTarget.dataset.id; // id'et på det klikkede element
+  const relevantObj = list.find((element) => element.id === clickedId); //  find taskobjektet i arrayet  ved hjælp af id
 
   // hvis man har klikket på en checkbox ...
   if (target.type === "checkbox") {
-    //forhindre en ændring på checkbox (ændringen skal ske pga. vores model - arrayet)
-    evt.preventDefault();
+    evt.preventDefault(); //forhindre en ændring på checkbox (ændringen skal ske pga. vores model - arrayet)
+    relevantObj.done = !relevantObj.done; // vi ændrer i done-status i arrayet
 
-    // gør noget ved objektet // arrayet
-    // vi ændrer i done-status i arrayet
-    relevantObj.done = !relevantObj.done;
     updateLocalStorage();
     updateView();
   }
 
   // hvis man har klikket på -(slet)knappen ...
   if (target.dataset.type === "trash") {
+    const arrayIndex = list.findIndex((element) => element.id === clickedId); //Finder indexet af det relevante element
     // Denne linje fjerner et element fra `list`-arrayet ved at bruge `splice()`
-    // det første argument er indekset (`arrayIndex`)
-    // det andet angiver, hvor mange elementer der skal fjernes (her 1)
+    // det første argument er indekset (`arrayIndex`) og det andet angiver, hvor mange elementer der skal fjernes (her 1)
     list.splice(arrayIndex, 1);
     updateLocalStorage();
     updateView();
@@ -101,17 +93,14 @@ function liClick(evt) {
 
   // hvis man har klikket på textfeltet  ...
   if (target.type === "text") {
-    // vi gemmer den gamle værdi, ud fra den description som er i arrayet
-    const oldValue = relevantObj.description;
-    // skriver det i input feltet, som vores old value er (så man ikke skal skrive hele sætningen forfra)
-    target.value = oldValue;
-    // aktivere at man kan skrive i feltet
-    target.focus();
+    const oldValue = relevantObj.description; // vi gemmer den gamle værdi, ud fra den description som er i arrayet
+    target.value = oldValue; // skriver det i input feltet, som vores old value er (så man ikke skal skrive hele sætningen forfra)
+    target.focus(); // aktivere at man kan skrive i feltet
+
     // lytter på et enter-tryk
     target.addEventListener("keypress", (e) => {
       if (e.code === "Enter") {
-        // retter objektet description i arrayet, så den bliver fastsat til en ny value
-        relevantObj.description = e.target.value;
+        relevantObj.description = e.target.value; // retter objektet description i arrayet, så den bliver fastsat til en ny value
         updateLocalStorage();
         updateView();
       }
@@ -120,17 +109,14 @@ function liClick(evt) {
 
   // hvis man har klikket på talfeltet ...
   if (target.type === "number") {
-    // vi gemmer den gamle værdi, ud fra den amount som er i arrayet
-    const oldAmountValue = relevantObj.amount;
-    // skriver det i input feltet, som vores old amount value er (så man ikke skal skrive hele tallet forfra)
-    target.value = oldAmountValue;
-    // aktivere at man kan skrive i feltet
-    target.focus();
+    const oldAmountValue = relevantObj.amount; // vi gemmer den gamle værdi, ud fra den amount som er i arrayet
+    target.value = oldAmountValue; // skriver det i input feltet, som vores old amount value er (så man ikke skal skrive hele tallet forfra)
+    target.focus(); // aktivere at man kan skrive i feltet
+
     // lytter på et enter-tryk
     target.addEventListener("keypress", (e) => {
       if (e.code === "Enter") {
-        // retter objektet amount i arrayet, så den bliver fastsat til en ny value
-        relevantObj.amount = e.target.value;
+        relevantObj.amount = e.target.value; // retter objektet amount i arrayet, så den bliver fastsat til en ny value
         updateLocalStorage();
         updateView();
       }
@@ -148,10 +134,10 @@ function createClick() {
     amount: inputAmount.value,
     done: false,
   });
-  // tømmer inputfelterne for det man har indtastet, og opdatere view'en
-  clearInput();
+  clearInput(); // tømmer inputfelterne for det man har indtastet, og opdatere view'en
   updateView();
 }
+
 // fjerne li-elementer ved at køre removeTaskFromList-funktionen og opdatere view'et efterfølgende
 function trashClick(evt) {
   removeTaskFromList(evt.target.dataset.id);
