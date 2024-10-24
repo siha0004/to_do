@@ -19,14 +19,14 @@ Herefter kan vi bygge listerne igen, hvor vi looper igennem hver element i liste
 
 Hver `li`består af nogle inputfelter med henholdsvis en checkbox, number, og text. I elementer der er done, er inputfeltet for text, erstattet med et `<p>`, da det ikke skal være muligt at ændre i en færdig task. Derudover er der en sletknap på hvert element.
 
-```list.forEach((each) => {
+```
+list.forEach((each) => {
     if (each.done === true) {
-      doneTasks.innerHTML +=`<li data-id="${each.id}"><input type="checkbox" name="done" id="done" class="checkbox" checked><input type="number" name="number" id="number" value=${each.amount}><span>x</span><p>${each.description}</p>
- <button data-type="trash" ></button></li>`;
+        doneTasks.innerHTML +=`<li data-id="${each.id}"><input type="checkbox" name="done" id="done" class="checkbox" checked><input type="number" name="number" id="number" value=${each.amount}><span>x</span><p>${each.description}</p>
+        <button data-type="trash" ></button></li>`;
     } else {
-      activeTasks.innerHTML += `<li data-id="${each.id}"><input type="checkbox" name="done" id="done" class="checkbox"><input type="number" name="number" id="number" value=${each.amount}><span>x</span><input type="text" name="" id="" value="${each.description}" />
-<button data-type="trash" ></button></li>`;
-    }
+      activeTasks.innerHTML += `<li data-id="${each.id}"><input type="checkbox" name="done" id="done" class="checkbox"><input type="number" name="number" id="number" value=${each.amount}><span>x</span><input type="text" name="" id="" value="${each.description}" /><button data-type="trash" ></button></li>`;
+        }
   });
 
 ```
@@ -45,9 +45,9 @@ Derefter lytter vi på, et tastaturtast på _enter_. Hvis dette event indtræffe
 Til slut kører vi `updateLocalStorage();` `updateView();`
 
 ```
- const target = evt.target;
-  const clickedId = currentTarget.dataset.id;
-  const relevantObj = list.find((element) => element.id === clickedId);
+const target = evt.target;
+const clickedId = currentTarget.dataset.id;
+const relevantObj = list.find((element) => element.id === clickedId);
 
 if (target.type === "text") {
     const oldValue = relevantObj.description;
