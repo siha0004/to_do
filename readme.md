@@ -1,11 +1,9 @@
 # Refleksion
 
-## Proces
+## Opbygning
 
 Vores tilgang til kodeprocessen har været med MVC modellen.
 Vi benytter local storage til at gemme vores array.
-
-## Opbygning
 
 Vores Todo liste er bygget op med to `ul` hvor der er en liste til aktive opgaver og en til færdige opgaver.
 Hver opgave/objekt/`li` har en datastruktur bestående af en som indeholder et id, en description, amount og en boolean som indeholder status for done.
